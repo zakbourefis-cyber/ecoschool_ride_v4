@@ -13,10 +13,12 @@ require_once 'include/menu.php';
         <h1>Bienvenue sur <span class="text_vert">EcoSchool Ride</span></h1>
         <p>La solution de transport scolaire écologique et sécurisée pour vos enfants. Réservez facilement des trajets avec nos conducteurs partenaires certifiés.</p>
 
-        <?php if (!isConnecte()): ?>
-            <a href="<?php echo BASE_URL; ?>/inscription.php" class="btn"><i class="fa-solid fa-leaf"></i> Commencer maintenant</a>
-        <?php else: ?>
+        <?php if (isset($_SESSION['id_conducteur'])): ?>
+            <a href="<?php echo BASE_URL; ?>/conducteur/dashboard.php" class="btn" style="background-color: #2d6a4f;"><i class="fa-solid fa-steering-wheel"></i> Mon espace Conducteur</a>
+        <?php elseif (isset($_SESSION['id_parent'])): ?>
             <a href="<?php echo BASE_URL; ?>/parent/trajets.php" class="btn"><i class="fa-solid fa-magnifying-glass"></i> Voir les trajets</a>
+        <?php else: ?>
+            <a href="<?php echo BASE_URL; ?>/inscription.php" class="btn"><i class="fa-solid fa-leaf"></i> Commencer maintenant</a>
         <?php endif; ?>
     </div>
 

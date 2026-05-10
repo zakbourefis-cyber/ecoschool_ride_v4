@@ -89,7 +89,7 @@ $stmtV = $pdo->prepare($sqlVehicule);
 $stmtV->execute([$id_conducteur]);
 $vehicule = $stmtV->fetch(PDO::FETCH_ASSOC);
 
-require_once '../include/menu_conducteur.php';
+require_once '../include/menu.php';
 ?>
 
 <div class="container">
@@ -165,7 +165,7 @@ require_once '../include/menu_conducteur.php';
         <!-- En-tête trajet -->
         <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 18px;">
             <div>
-                <h3 style="font-size: 1.1em; margin-bottom: 4px;">
+                <h3 style="font-size: 1.1em; margin-bottom: 4px; color:#2d6a4f;">
                     <?php echo htmlspecialchars($trajet['point_depart']); ?>
                     <i class="fa-solid fa-arrow-right" style="color: var(--vert-clair); margin: 0 6px;"></i>
                     <?php echo htmlspecialchars($trajet['destination']); ?>

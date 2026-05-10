@@ -2,10 +2,11 @@
 
 // recuperer tous les trajets
 function get_all_trajets($pdo) {
-    $sql = "SELECT t.*, c.nom, c.prenom, v.capacite_totale
+    $sql = "SELECT t.*, c.nom, c.prenom, v.modele, v.immatriculation 
             FROM trajets t
             JOIN conducteurs c ON t.id_conducteur = c.id_conducteur
-            JOIN vehicules v ON c.id_vehicule = v.id_vehicule";
+            LEFT JOIN vehicules v ON c.id_vehicule = v.id_vehicule
+            ORDER BY t.horaire ASC";
     $stmt = $pdo->query($sql);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
